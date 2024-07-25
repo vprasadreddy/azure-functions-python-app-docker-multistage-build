@@ -8,8 +8,10 @@ COPY requirements.txt /
 RUN pip install --target /home/site/wwwroot -r /requirements.txt
 
 # Stage2
-# Use Microsoft Azure Functions Python base image and it is need for Function App to be up and running.
-FROM mcr.microsoft.com/azure-functions/python:4-python3.10
+# Use Microsoft Azure Functions base image as it is needed for Function App to be up and running.
+# FROM mcr.microsoft.com/azure-functions/python:4-python3.10
+FROM mcr.microsoft.com/azure-functions/base:4.0
+
 ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
     AzureFunctionsJobHost__Logging__Console__IsEnabled=true
 
